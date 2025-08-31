@@ -6,6 +6,9 @@
 # Async way
 ![Kafka](./img/kafka-async.png)
 
+# Api Gateway
+![Api Gateway](./img/apigateway.png)
+
 # Patient Service
 
 ---
