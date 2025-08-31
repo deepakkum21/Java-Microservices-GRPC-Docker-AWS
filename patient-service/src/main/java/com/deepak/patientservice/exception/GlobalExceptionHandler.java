@@ -41,4 +41,16 @@ public class GlobalExceptionHandler {
         errors.put("patientId", exception.getMessage());
         return ResponseEntity.badRequest().body(errors);
     }
+
+    @ExceptionHandler(KafkaPatientProduceException.class)
+    public ResponseEntity<?> handleKafkaPatientProduceException(KafkaPatientProduceException exception) {
+        Map<String, String> errors = new HashMap<>();
+        if(exception.getMessage() == null) {
+            errors.put("error", "Error sending PatientCreated event");
+        }
+        else {
+            errors.put("error", exception.getMessage());
+        }
+        return ResponseEntity.badRequest().body(errors);
+    }
 }

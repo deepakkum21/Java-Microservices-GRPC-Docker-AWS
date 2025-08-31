@@ -1,6 +1,10 @@
 # Java-Microservices-GRPC-Docker-AWS
 
+# Sync way
 ![GRPC architecture](./img/grpc-architecture-patient.png)
+
+# Async way
+![Kafka](./img/kafka-async.png)
 
 # Patient Service
 
