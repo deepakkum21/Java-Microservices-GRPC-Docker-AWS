@@ -1,4 +1,6 @@
-### GET reques to get all patients
-GET http://localhost:4000/patient
+### GET request to get all patients
+###GET http://localhost:4000/patient   via patient-service
 
+### GET request to get all patients via API GATEWAY
+GET http://localhost:8080/api/patient
 ###
