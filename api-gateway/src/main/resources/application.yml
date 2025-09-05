@@ -5,7 +5,17 @@ spring:
   cloud:
     gateway:
       routes:
-        ## REST CLIENT -> http://localhost:4004/api/patients
+        ## REST-CLIENT -> http://localhost:8080/auth/login
+        ## API-GATEWAY -> http://auth-service:4004/auth/login
+        
+        - id: auth-service-route
+          uri: http://auth-service:4004
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+
+        ## REST CLIENT -> http://localhost:8080/api/patients
         ## API GATEWAY -> http://patient-service:4000/patients
         ## PATIENT SERVICE (SPRING BOOT APP) -> /patients -> Patients Array
         - id: patient-service-route
@@ -14,8 +24,10 @@ spring:
             - Path=/api/patient/**
           filters:
             - StripPrefix=1
+            ## JWT VALIDATION using JwtValidationGatewayFilterFactory ie any request matching to predicates will be passed/go via to JwtValidationGatewayFilterFactory
+            - JwtValidation
 
-        ## REST-CLIENT -> http://localhost:4004/api-docs/patients
+        ## REST-CLIENT -> http://localhost:8080/api-docs/patients
         ## API-GATEWAY -> http://patient-service:4000/v3/api-docs
         - id: api-docs-patient-route
           uri: http://patient-service:4000

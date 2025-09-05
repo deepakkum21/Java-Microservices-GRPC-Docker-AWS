@@ -3,4 +3,5 @@
 
 ### GET request to get all patients via API GATEWAY
 GET http://localhost:8080/api/patient
+Authorization: Bearer {{token}}
 ###
