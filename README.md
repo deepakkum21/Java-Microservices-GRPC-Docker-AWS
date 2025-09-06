@@ -9,6 +9,21 @@
 # Api Gateway
 ![Api Gateway](./img/apigateway.png)
 
+# LocalStack
+![LocalStack](./img/localstack.png)
+
+## Localstask
+- configure aws
+```shell
+$ aws configure
+AWS Access Key ID [****************VAYM]: test
+AWS Secret Access Key [****************0DhA]: test
+Default region name [us-west-2]: us-east-1
+Default output format [json]: json
+```
+- redirect all aws cli to localstack
+- ` aws --endpoint-url=http://localhost:4566 lambda list-functions`
+
 # Patient Service
 
 ---
