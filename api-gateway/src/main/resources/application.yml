@@ -36,9 +36,18 @@ spring:
           filters:
             - RewritePath=/api-docs/patient,/v3/api-docs
 
-#        - id: api-docs-auth-route
-#          uri: http://auth-service:4005
-#          predicates:
-#            - Path=/api-docs/auth
-#          filters:
-#            - RewritePath=/api-docs/auth,/v3/api-docs
+        - id: api-swagger-patient-route
+          uri: http://patient-service:4000
+          predicates:
+            - Path=/patient/swagger-ui.html
+          filters:
+            - RewritePath=/patient/swagger-ui.html,/swagger-ui.html
+
+        ## REST-CLIENT -> http://localhost:8080/api-docs/auth
+        ## API-GATEWAY -> http://auth-service:4004/v3/api-docs
+        - id: api-docs-auth-route
+          uri: http://auth-service:4004
+          predicates:
+            - Path=/api-docs/auth
+          filters:
+            - RewritePath=/api-docs/auth,/v3/api-docs
